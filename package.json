@@ -1,0 +1,33 @@
+{
+  "name": "patrickso-playwright-portfolio",
+  "version": "1.0.0",
+  "description": "This repository is my automation testing portfolio, built to showcase hands-on expertise with Playwright. It demonstrates how to design and execute UI tests, API tests, and CI/CD pipelines using modern best practices.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:dev": "dotenv -e .env.dev -- npx playwright test",
+    "test:staging": "dotenv -e .env.staging -- npx playwright test",
+    "pw:report": "npx playwright show-report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patricks0/patrickso-playwright-portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/patricks0/patrickso-playwright-portfolio/issues"
+  },
+  "homepage": "https://github.com/patricks0/patrickso-playwright-portfolio#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^24.3.0",
+    "dotenv-cli": "^10.0.0"
+  },
+  "dependencies": {
+    "fsevents": "^2.3.2",
+    "playwright": "^1.55.0",
+    "playwright-core": "^1.55.0"
+  }
+}
