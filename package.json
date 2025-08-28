@@ -5,9 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "npx playwright test",
-    "test:dev": "dotenv -e .env.dev -- npx playwright test",
-    "test:staging": "dotenv -e .env.staging -- npx playwright test",
-    "pw:report": "npx playwright show-report"
+    "test:dev": "npx playwright test --project=dev",
+    "test:staging": "npx playwright test --project=staging",
+    "test:api": "npx playwright test --project=api",
+    "pw:report": "npx playwright show-report",
+    "allure-report": "allure generate allure-results --clean -o allure-report && allure open allure-report",
+    "allure:serve": "allure serve allure-results",
+    "test:headed": "npx playwright test --headed",
+    "test:debug": "npx playwright test --debug"
   },
   "repository": {
     "type": "git",
@@ -23,9 +28,12 @@
   "devDependencies": {
     "@playwright/test": "^1.55.0",
     "@types/node": "^24.3.0",
+    "allure-commandline": "^2.34.1",
+    "allure-playwright": "^3.3.3",
     "dotenv-cli": "^10.0.0"
   },
   "dependencies": {
+    "dotenv": "^17.2.1",
     "fsevents": "^2.3.2",
     "playwright": "^1.55.0",
     "playwright-core": "^1.55.0"
