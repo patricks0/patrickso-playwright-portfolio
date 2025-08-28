@@ -1,0 +1,3 @@
+Column "CPU" is at index: 4
+Value at row "Chrome", column "CPU" is: 1.9%
+Trimmed CPU value: 1.9%

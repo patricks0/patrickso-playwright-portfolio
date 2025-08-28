@@ -1,0 +1,64 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - link "UITAP" [ref=e3] [cursor=pointer]:
+      - /url: /
+    - list [ref=e5]:
+      - listitem [ref=e6]:
+        - link "Home" [ref=e7] [cursor=pointer]:
+          - /url: /home
+      - listitem [ref=e8]:
+        - link "Resources" [ref=e9] [cursor=pointer]:
+          - /url: /resources
+  - generic [ref=e11]:
+    - heading "Class Attribute" [level=3] [ref=e12]
+    - paragraph [ref=e13]: Class attribute of an element may contain more than one class reference. E.g.
+    - code [ref=e15]:
+      - generic [ref=e16]:
+        - generic [ref=e17]:
+          - generic [ref=e18]: <
+          - text: button
+        - generic [ref=e19]: class
+        - generic [ref=e20]:
+          - generic [ref=e21]: =
+          - generic [ref=e22]: "\""
+          - text: btn btn-primary btn-test
+          - generic [ref=e23]: "\""
+        - generic [ref=e24]: ">"
+    - paragraph [ref=e25]: "XPath selector relying on a class must be well formed. For example, the following will not work:"
+    - code [ref=e27]: //button[@class='btn-primary']
+    - paragraph [ref=e28]: Correct variant is
+    - code [ref=e30]: //button[contains(concat(' ', normalize-space(@class), ' '), ' btn-primary ')]
+    - heading "Scenario" [level=4] [ref=e31]
+    - list [ref=e32]:
+      - listitem [ref=e33]: Record primary (blue) button click and press ok in alert popup.
+      - listitem [ref=e34]:
+        - text: Then execute your test to make sure that it can identify the button using
+        - code [ref=e35]: btn-primary
+        - text: class.
+    - heading "Playground" [level=4] [ref=e36]
+    - button "Button" [ref=e37] [cursor=pointer]
+    - button "Button" [ref=e38] [cursor=pointer]
+    - button "Button" [ref=e39] [cursor=pointer]
+  - contentinfo [ref=e41]:
+    - generic [ref=e42]:
+      - generic [ref=e45]:
+        - link "Fork the website on GitHub" [ref=e46] [cursor=pointer]:
+          - /url: https://github.com/inflectra/ui-test-automation-playground
+        - text: .
+      - generic [ref=e47]:
+        - text: Supported by
+        - link "Rapise" [ref=e48] [cursor=pointer]:
+          - /url: https://www.inflectra.com/Rapise/
+        - text: test automation team. Copyright © 2020
+        - link "Inflectra Corporation" [ref=e49] [cursor=pointer]:
+          - /url: https://www.inflectra.com/
+        - text: .
+    - generic [ref=e50]:
+      - text: This work is licensed under the
+      - link "Apache License 2.0" [ref=e51] [cursor=pointer]:
+        - /url: https://www.apache.org/licenses/LICENSE-2.0
+      - text: .
+```

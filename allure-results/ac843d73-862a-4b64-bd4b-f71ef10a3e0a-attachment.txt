@@ -1,0 +1,3 @@
+Chrome row values: [ 'Chrome', '7.1%', '0.3 MB/s', '5.9 Mbps', '90.4 MB' ]
+Footer CPU value: 7.1%
+Match found ✅
