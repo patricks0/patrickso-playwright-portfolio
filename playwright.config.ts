@@ -1,4 +1,6 @@
 import { defineConfig } from '@playwright/test';
+import dotenv from 'dotenv';
+dotenv.config({ path: '.env.dev' });
 // Install allure reporter: npm install --save-dev allure-playwright
 
 export default defineConfig({
@@ -20,21 +22,21 @@ export default defineConfig({
       name: 'dev',
       testDir: 'tests/ui/playground',
       use: {
-        baseURL: 'http://www.uitestingplayground.com',
+        baseURL: process.env.BASE_URL || 'http://www.uitestingplayground.com',
       },
     },
     {
       name: 'staging',
       testDir: 'tests/ui/ecommerce',
       use: {
-        baseURL: 'https://automationexercise.com',
+        baseURL: process.env.STAGING_BASE_URL || 'https://automationexercise.com',
       },
     },
     {
       name: 'api',
       testDir: 'tests/api',
       use: {
-        baseURL: 'https://reqres.in/api',
+        baseURL: process.env.API_BASE || 'https://reqres.in/api',
       },
     },
   ],
