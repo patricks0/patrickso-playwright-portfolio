@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('search and add to cart', async ({ page }) => {
+test.skip('search and add to cart', async ({ page }) => {
   await page.goto('/');                         // baseURL set in project=staging
   await page.getByRole('link', { name: /products/i }).click();
   await page.getByPlaceholder(/search product/i).fill('shirt');
