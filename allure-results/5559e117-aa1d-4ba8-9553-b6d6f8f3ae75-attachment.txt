@@ -1,6 +1,0 @@
-{
-  name: 'patrick',
-  job: 'tester',
-  id: '830',
-  createdAt: '2025-08-28T03:29:44.310Z'
-}

@@ -1,5 +1,0 @@
-RAW row values: [ 'Chrome', '1 Mbps', '0.1 MB/s', '52.3 MB', '5.5%' ]
-NORMALIZED row values: [ 'Chrome', '1 Mbps', '0.1 MB/s', '52.3 MB', '5.5%' ]
-Chrome row values: [ 'Chrome', '1 Mbps', '0.1 MB/s', '52.3 MB', '5.5%' ]
-Footer CPU value: 5.5%
-Match found ✅

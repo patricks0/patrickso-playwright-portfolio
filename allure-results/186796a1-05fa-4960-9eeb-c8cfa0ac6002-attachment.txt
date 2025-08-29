@@ -1,1 +1,0 @@
-Column "CPU" is at index: 0

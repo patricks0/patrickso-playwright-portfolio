@@ -1,0 +1,2 @@
+Progress bar stopped at: 75%
+✅ Assertion passed: Progress bar stopped exactly at 75

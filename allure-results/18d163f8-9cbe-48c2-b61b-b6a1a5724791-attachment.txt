@@ -1,2 +1,0 @@
-Column "CPU" is at index: 4
-Value at row "Chrome", column "CPU" is: 3.5%
