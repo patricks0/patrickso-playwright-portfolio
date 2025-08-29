@@ -1,11 +1,13 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
+import { NavigationPage } from './page-objects/navigationPage';
+import { AjaxPage } from './page-objects/ajaxPage';
 
-    test('AJAX button triggers content (UITestingPlayground)', async ({ page }) => {
-        await page.goto('/ajax'); // baseURL from config
-        await page.getByRole('button', { name: 'Button Triggering AJAX Request' }).click();
-        await page.waitForResponse(resp => resp.url().includes('/ajaxdata') && resp.status() === 200);
+test('AJAX button triggers content (UITestingPlayground)', async ({ page }) => {
+  const nav = new NavigationPage(page);
+  const ajax = new AjaxPage(page);
 
-        // Wait for the element containing 'Data loaded' to appear
-        const dataLoadedLocator = page.locator('text=Data loaded');
-        await expect(dataLoadedLocator).toBeVisible({ timeout: 15000 });
-    });
+  await nav.gotoAjax();                 // centralized navigation
+  await ajax.triggerAjaxRequest();      // page-specific action
+  await ajax.waitForAjaxResponseOk();   // network-level confirmation
+  await ajax.expectDataLoadedVisible(); // UI confirmation
+});
