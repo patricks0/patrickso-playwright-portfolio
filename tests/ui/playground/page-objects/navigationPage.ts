@@ -17,7 +17,12 @@ export class NavigationPage {
   async gotoHiddenLayers() {
     await this.page.goto(this.urls.hiddenLayers);
   }
-  async gotoDynamicTable() {
+  async dynamicTable() {
     await this.page.goto(this.urls.dynamicTable);
+  }
+
+  // Consistent naming alias with other goto* methods
+  async gotoDynamicTable() {
+    await this.dynamicTable();
   }
 }
