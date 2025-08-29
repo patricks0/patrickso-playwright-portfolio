@@ -1,0 +1,1 @@
+Asserting: TableValue='9.3%' vs SummaryValue='9.3%'
