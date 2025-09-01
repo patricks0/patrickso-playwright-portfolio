@@ -1,7 +1,0 @@
-Progress bar current value: 75
-Progress bar stopped at: async progressBarValue() {
-    const actualValue = await this.progressBar().getAttribute('aria-valuenow');
-    console.log(`Progress bar current value: ${actualValue}`);
-    const finalValue = parseFloat(actualValue || '0');
-    return finalValue.toString();
-  }%

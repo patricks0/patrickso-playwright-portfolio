@@ -1,4 +1,0 @@
-Column "CPU" is at index: 1
-Value at row "Chrome", column "CPU" is: 8.9%
-Trimmed CPU value: 8.9%
-✅ Assertion passed: 8.9% equals 8.9%
