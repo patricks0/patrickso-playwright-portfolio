@@ -9,6 +9,7 @@ export class NavigationPage {
         hiddenLayers: '/hiddenlayers',
         dynamicTable: '/dynamictable',
         classAttribute: '/classattr',
+            textInput: '/textinput',
         // add more playground pages here…
     };
 
@@ -16,4 +17,5 @@ export class NavigationPage {
     async hiddenLayersPage() { await this.page.goto(this.urls.hiddenLayers); }
     async dynamicTablePage() { await this.page.goto(this.urls.dynamicTable); }
     async classAttributePage() { await this.page.goto(this.urls.classAttribute); }
+    async textInputPage() { await this.page.goto(this.urls.textInput); }
 }
