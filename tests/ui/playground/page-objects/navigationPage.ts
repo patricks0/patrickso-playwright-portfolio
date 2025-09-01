@@ -1,4 +1,5 @@
 import { Page } from '@playwright/test';
+import { verify } from 'crypto';
 
 export class NavigationPage {
     constructor(private page: Page) { }
@@ -9,7 +10,11 @@ export class NavigationPage {
         hiddenLayers: '/hiddenlayers',
         dynamicTable: '/dynamictable',
         classAttribute: '/classattr',
-            textInput: '/textinput',
+        textInput: '/textinput',
+        dynamicId: '/dynamicid',
+        progressBarWait: '/progressbar',
+        verifyText: '/verifytext',
+
         // add more playground pages here…
     };
 
@@ -18,4 +23,7 @@ export class NavigationPage {
     async dynamicTablePage() { await this.page.goto(this.urls.dynamicTable); }
     async classAttributePage() { await this.page.goto(this.urls.classAttribute); }
     async textInputPage() { await this.page.goto(this.urls.textInput); }
+    async dynamicButtonIdPage() { await this.page.goto(this.urls.dynamicId); }
+    async progressBarWaitPage() { await this.page.goto(this.urls.progressBarWait); }
+    async verifyTextPage() { await this.page.goto(this.urls.verifyText); }   
 }
