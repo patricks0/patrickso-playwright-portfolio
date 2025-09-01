@@ -1,0 +1,7 @@
+✅ Assertion passed: 'Removed' button is not visible
+✅ Assertion passed: 'Zero Width' button is not visible
+✅ Assertion passed: 'Overlapped' button is visible
+✅ Assertion passed: 'Opacity 0' button is visible
+✅ Assertion passed: 'Visibility Hidden' button is not visible
+✅ Assertion passed: 'Display None' button is not visible
+✅ Assertion passed: 'Offscreen' button is visible
