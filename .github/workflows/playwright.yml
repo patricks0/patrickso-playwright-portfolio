@@ -1,4 +1,11 @@
 name: Playwright CI
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: 'pages'
+  cancel-in-progress: false
 
 on:
   push:
@@ -7,7 +14,21 @@ on:
     branches: ["**"]
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - name: Install deps
+        run: npm ci --no-optional
+      - name: Lint
+        run: npm run lint
+
   e2e:
+    needs: [lint]
     name: shard ${{ matrix.shardIndex }} of ${{ matrix.shardTotal }}
     runs-on: ubuntu-latest
     timeout-minutes: 30
@@ -81,6 +102,21 @@ jobs:
       - name: Generate Allure report
         if: always() && hashFiles('allure-results/**') != ''
         run: npx -y allure-commandline generate allure-results --clean -o allure-report
+
+      - name: Setup Pages
+        if: always() && hashFiles('allure-report/**') != ''
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        if: always() && hashFiles('allure-report/**') != ''
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: allure-report
+
+      - name: Deploy to GitHub Pages
+        if: always() && hashFiles('allure-report/**') != ''
+        id: deployment
+        uses: actions/deploy-pages@v4
 
       - name: Upload Allure report
         if: always() && hashFiles('allure-results/**') != ''
