@@ -1,5 +1,6 @@
-import { test as base, expect } from '@playwright/test';
 import { faker } from '@faker-js/faker';
+import { test as base } from '@playwright/test';
+
 import { DEFAULT_SEED } from '../data/constants';
 import { userBuilder as baseUserBuilder, addressBuilder as baseAddressBuilder, randomButtonLabel } from '../data/factories';
 
@@ -37,4 +38,3 @@ export const test = base.extend<TestData>({
 });
 
 export { expect } from '@playwright/test';
-

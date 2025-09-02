@@ -1,11 +1,12 @@
 import { Page } from "@playwright/test";
+
 import { AjaxPage } from "./ajaxPage";
-import { NavigationPage } from "./navigationPage";
-import { DynamicTablePage } from "./dynamicTablePage";
 import { ClassAttributePage } from "./classAttributePage";
-import { TextInputPage } from "./textInputPage";
 import { DynamicButtonIdPage } from "./dynamicButtonIdPage";
+import { DynamicTablePage } from "./dynamicTablePage";
+import { NavigationPage } from "./navigationPage";
 import { ProgressBarWaitPage } from "./progressBarWaitPage";
+import { TextInputPage } from "./textInputPage";
 import { VerifyText } from "./verifyTextpage";
 
 export class PageManager {

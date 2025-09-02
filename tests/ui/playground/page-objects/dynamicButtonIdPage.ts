@@ -1,4 +1,4 @@
-import { Page, Locator, expect } from '@playwright/test';
+import { Page, Locator } from '@playwright/test';
 
 export class DynamicButtonIdPage  {
     constructor(private page: Page) { }

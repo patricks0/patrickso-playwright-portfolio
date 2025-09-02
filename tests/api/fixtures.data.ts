@@ -1,6 +1,7 @@
-import { test as base } from './fixtures';
 import { faker } from '@faker-js/faker';
+
 import { userPayloadBuilder } from './data/factories';
+import { test as base } from './fixtures';
 
 type ApiDataFixtures = {
   faker: typeof faker;
@@ -19,4 +20,3 @@ export const test = base.extend<ApiDataFixtures>({
 });
 
 export { expect } from '@playwright/test';
-

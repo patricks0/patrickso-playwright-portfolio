@@ -1,4 +1,5 @@
 import { expect } from '@playwright/test';
+
 import { test, url } from '../fixtures';
 
 test('GET list of users (page 1, per_page=2)', async ({ api }) => {

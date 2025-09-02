@@ -34,6 +34,6 @@ export class ProgressBarWaitPage {
                 return valueNow === 75;
             }
             return false;
-        },{ timeout: 15000 });
+        },{ timeout: timeoutMs });
     }
 }                                
