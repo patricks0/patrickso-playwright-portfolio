@@ -1,6 +1,13 @@
 import { defineConfig } from '@playwright/test';
 import dotenv from 'dotenv';
+<<<<<<< HEAD
 dotenv.config({ path: '.env.dev' });
+=======
+// Avoid loading local .env.dev on CI; rely on env vars set by the workflow
+if (!process.env.CI) {
+  dotenv.config({ path: '.env.dev' });
+}
+>>>>>>> feature/page-object-model
 // Install allure reporter: npm install --save-dev allure-playwright
 
 export default defineConfig({
@@ -40,4 +47,8 @@ export default defineConfig({
       },
     },
   ],
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> feature/page-object-model
