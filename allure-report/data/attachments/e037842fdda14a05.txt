@@ -1,3 +1,0 @@
-Column "CPU" is at index: 2
-Value at row "Chrome", column "CPU" is: 5.4%
-Yellow CPU value from class bg-warning: Chrome CPU: 5.4%
