@@ -51,9 +51,9 @@ jobs:
 
       - name: Run tests
         run: |
-          # You can remove --reporter to use reporters from playwright.config.ts
+          # Run selected projects from playwright.config.ts (no --browser when projects are defined)
           npx playwright test \
-            --browser=${{ matrix.browser }} \
+            --project=dev --project=api \
             --reporter=line,html,allure-playwright \
             --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} \
             --trace=on-first-retry \
