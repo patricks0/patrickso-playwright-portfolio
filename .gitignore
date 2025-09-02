@@ -145,3 +145,4 @@ playwright-report/
 test-results/
 *.trace.zip
 allure-history/
+.DS_Store
