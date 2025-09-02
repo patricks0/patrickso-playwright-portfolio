@@ -38,7 +38,6 @@
   },
   "dependencies": {
     "dotenv": "^17.2.1",
-    "fsevents": "^2.3.2",
     "playwright": "^1.55.0",
     "playwright-core": "^1.55.0"
   }
