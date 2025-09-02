@@ -8,13 +8,12 @@ on:
 
 jobs:
   e2e:
-    name: ${{ matrix.browser }} shard ${{ matrix.shardIndex }} of ${{ matrix.shardTotal }}
+    name: shard ${{ matrix.shardIndex }} of ${{ matrix.shardTotal }}
     runs-on: ubuntu-latest
     timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix:
-        browser: [chromium, firefox, webkit]
         shardIndex: [1]      # increase (e.g., [1,2,3]) as the suite grows
         shardTotal: [1]
 
@@ -63,7 +62,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-report-${{ matrix.browser }}-${{ matrix.shardIndex }}
+          name: playwright-report-${{ matrix.shardIndex }}
           path: playwright-report
           if-no-files-found: ignore
           retention-days: 7
@@ -72,7 +71,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: traces-and-results-${{ matrix.browser }}-${{ matrix.shardIndex }}
+          name: traces-and-results-${{ matrix.shardIndex }}
           path: |
             test-results
             **/*.trace.zip
@@ -87,7 +86,7 @@ jobs:
         if: always() && hashFiles('allure-results/**') != ''
         uses: actions/upload-artifact@v4
         with:
-          name: allure-report-${{ matrix.browser }}-${{ matrix.shardIndex }}
+          name: allure-report-${{ matrix.shardIndex }}
           path: allure-report
           if-no-files-found: ignore
           retention-days: 7
@@ -96,7 +95,7 @@ jobs:
         if: always() && hashFiles('allure-results/**') != ''
         uses: actions/upload-artifact@v4
         with:
-          name: allure-results-${{ matrix.browser }}-${{ matrix.shardIndex }}
+          name: allure-results-${{ matrix.shardIndex }}
           path: allure-results
           if-no-files-found: ignore
           retention-days: 7
