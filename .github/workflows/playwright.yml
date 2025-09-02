@@ -1,43 +1,85 @@
-name: Playwright Tests with Allure
+name: Playwright CI
 
 on:
   push:
-    branches: [ main ]
+    branches: ["**"]
   pull_request:
-    branches: [ main ]
+    branches: ["**"]
 
 jobs:
-  test:
+  e2e:
+    name: ${{ matrix.browser }} shard ${{ matrix.shardIndex }} of ${{ matrix.shardTotal }}
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox, webkit]
+        shardIndex: [1]      # increase (e.g., [1,2,3]) as the suite grows
+        shardTotal: [1]
 
     env:
+      # Public endpoints used by this repo
       BASE_URL: http://www.uitestingplayground.com
       STAGING_BASE_URL: https://automationexercise.com
       API_BASE: https://reqres.in/api
+      # Optional secret if needed by your API tests
       API_KEY: ${{ secrets.API_KEY }}
+      # Ensure HTML report is produced
+      PW_TEST_HTML_REPORT: "html"
+      NODE_ENV: "ci"
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
 
-      - name: Install dependencies
+      - name: Install deps and browsers
         run: |
-          npm install --force
-          npm install -D allure-playwright allure-commandline --force
+          npm ci
+          npx playwright install --with-deps
 
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps --force
+      - name: Print versions
+        run: |
+          node -v
+          npx playwright --version
 
-      - name: Run Playwright tests with Allure
-        run: npx playwright test --reporter=line,allure-playwright
+      - name: Run tests
+        run: |
+          # You can remove --reporter to use reporters from playwright.config.ts
+          npx playwright test \
+            --browser=${{ matrix.browser }} \
+            --reporter=line,html,allure-playwright \
+            --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} \
+            --trace=on-first-retry \
+            --retries=1
 
-      - name: Generate Allure Report
+      - name: Upload Playwright HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report-${{ matrix.browser }}-${{ matrix.shardIndex }}
+          path: playwright-report
+          if-no-files-found: ignore
+          retention-days: 7
+
+      - name: Upload traces & test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: traces-and-results-${{ matrix.browser }}-${{ matrix.shardIndex }}
+          path: |
+            test-results
+            **/*.trace.zip
+          if-no-files-found: ignore
+          retention-days: 7
+
+      - name: Generate Allure report
         if: always()
         run: npx allure generate allure-results --clean -o allure-report
 
@@ -45,12 +87,16 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: allure-report
-          path: allure-report/
+          name: allure-report-${{ matrix.browser }}-${{ matrix.shardIndex }}
+          path: allure-report
+          if-no-files-found: ignore
+          retention-days: 7
 
       - name: Upload Allure results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: allure-results
-          path: allure-results/
+          name: allure-results-${{ matrix.browser }}-${{ matrix.shardIndex }}
+          path: allure-results
+          if-no-files-found: ignore
+          retention-days: 7
