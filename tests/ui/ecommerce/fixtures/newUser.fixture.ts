@@ -1,7 +1,7 @@
 import { test as base} from '@playwright/test';
-import { setupNewUser } from '../setup/newUser.setup';
-import { PageManager } from '../page-objects/pageManager';
 import { assertText} from '../../../support/assertions'
+import { PageManager } from '../page-objects/pageManager';
+import { setupNewUser } from '../setup/newUser.setup';
 
 type NewUser = Awaited<ReturnType<typeof setupNewUser>>;
 

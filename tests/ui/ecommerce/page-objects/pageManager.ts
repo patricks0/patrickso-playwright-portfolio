@@ -1,10 +1,9 @@
 import { Page } from "@playwright/test";
+import { AccountDeletedPage } from "./accountDeletedPage";
+import { AccountCreatedPage } from "./accountCreatedPage";
 import { HomePage } from "./homePage";
 import { LoginSignUpPage } from "./loginSignUpPage";
 import { RegisterPage } from "./registerPage";
-import { AccountCreatedPage } from "./accountCreatedPage";
-import { AccountDeletedPage } from "./accountDeletedPage";
-
 
 export class PageManager {
     private readonly page: Page;

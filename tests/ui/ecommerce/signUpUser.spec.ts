@@ -1,7 +1,6 @@
 import { test, expect} from './fixtures/newUser.fixture';
-//import { expect } from 'playwright/test';
 import { PageManager } from './page-objects/pageManager';
-import { assertVisible, assertEqual, assertText, logAssert } from '../../support/assertions';
+import { assertText} from '../../support/assertions';
 
 test('Verify that user can be registered and be deleted', async ({ page, newUser }) => {
   const pm = new PageManager(page);
