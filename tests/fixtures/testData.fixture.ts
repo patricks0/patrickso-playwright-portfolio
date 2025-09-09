@@ -16,7 +16,8 @@ function makeUserBuilder() {
 }
 
 function makeAddressBuilder() {
-  return (overrides?: Parameters<typeof baseAddressBuilder>[1]) => baseAddressBuilder(faker, overrides);
+  return (country: string, overrides?: Parameters<typeof baseAddressBuilder>[1]) =>
+    baseAddressBuilder(country, overrides);
 }
 
 export const test = base.extend<TestData>({
