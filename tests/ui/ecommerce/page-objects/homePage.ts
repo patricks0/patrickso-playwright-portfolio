@@ -1,4 +1,4 @@
-import { Page, Locator} from '@playwright/test';
+import { Page, Locator } from '@playwright/test';
 import { NavBar } from '../components/navBar';
 
 export class HomePage {
@@ -21,8 +21,8 @@ export class HomePage {
     get apiTestingLink(): Locator { return this.page.getByRole('link', { name: /api testing/i }); }
 
     // Utility
-    get userLoggedInBanner(): Locator { return this.page.locator('[data-qa="user-logged-in"]'); } 
-    get actualUserLoggedIn(): Locator {return this.page.locator('li a', { hasText: 'Logged in as' })}// adjust if needed
+    get userLoggedInBanner(): Locator { return this.page.locator('[data-qa="user-logged-in"]'); }
+    get actualUserLoggedIn(): Locator { return this.page.locator('li a', { hasText: 'Logged in as' }) }// adjust if needed
     //Actions
     async clickSignupLoginLink() {
         await this.signupLoginLink.click();

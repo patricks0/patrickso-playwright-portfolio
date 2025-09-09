@@ -1,5 +1,5 @@
-import { test as base} from '@playwright/test';
-import { assertText} from '../../../support/assertions'
+import { test as base } from '@playwright/test';
+import { assertText } from '../../../support/assertions'
 import { PageManager } from '../page-objects/pageManager';
 import { setupNewUser } from '../setup/newUser.setup';
 

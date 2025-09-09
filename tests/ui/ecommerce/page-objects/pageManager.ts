@@ -1,6 +1,6 @@
 import { Page } from "@playwright/test";
-import { AccountDeletedPage } from "./accountDeletedPage";
 import { AccountCreatedPage } from "./accountCreatedPage";
+import { AccountDeletedPage } from "./accountDeletedPage";
 import { HomePage } from "./homePage";
 import { LoginSignUpPage } from "./loginSignUpPage";
 import { RegisterPage } from "./registerPage";
@@ -26,7 +26,7 @@ export class PageManager {
     get onLoginSignUpPage() { return this.loginSignUpPage; }
     get onHome() { return this.homePage; }
     get onRegisterPage() { return this.registerPage; }
-    get onAccountCreatedPage() { return this.accountCreatedPage; }  
+    get onAccountCreatedPage() { return this.accountCreatedPage; }
     get onAccountDeletedPage() { return this.accountDeletedPage; }
 }
 

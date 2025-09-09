@@ -2,12 +2,12 @@ import { Page, Locator } from '@playwright/test';
 import { NavBar } from '../components/navBar';
 
 export class RegisterPage {
-    readonly page: Page;
-    readonly nav: NavBar;
-    constructor(page: Page) {
-        this.page = page;
-        this.nav = new NavBar(page);
-    }
+  readonly page: Page;
+  readonly nav: NavBar;
+  constructor(page: Page) {
+    this.page = page;
+    this.nav = new NavBar(page);
+  }
 
   //Page Elements for Assertions
   get enterAccountInfoText(): Locator { return this.page.getByText(/Enter Account Information/i); }

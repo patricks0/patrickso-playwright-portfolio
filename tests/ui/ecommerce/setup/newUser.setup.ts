@@ -1,5 +1,4 @@
 import { Page} from '@playwright/test';
-import { PageManager } from '../page-objects/pageManager';
 import {
   userBuilder,
   companyBuilder,
@@ -8,6 +7,7 @@ import {
   mobileNumberBuilder,
 } from '../../../data/factories';
 import { assertText } from '../../../support/assertions';
+import { PageManager } from '../page-objects/pageManager';
 
 export type NewUserResult = {
   username: string;
