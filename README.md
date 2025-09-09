@@ -21,7 +21,11 @@ The goal of this repo is to provide a realistic, recruiter-friendly example of a
 **Project Structure**
 - `tests/ui/playground`: UI tests for UITestingPlayground pages.
 - `tests/ui/playground/page-objects`: Page Object Model classes used by UI tests.
-- `tests/ui/ecommerce`: Example UI tests for a public ecommerce site.
+- `tests/ui/ecommerce`: Ecommerce UI tests and support code.
+- `tests/ui/ecommerce/page-objects`: Ecommerce page objects.
+- `tests/ui/ecommerce/components`: Reusable UI components (e.g., navbar).
+- `tests/ui/ecommerce/fixtures`: Data fixtures for ecommerce flows.
+- `tests/ui/ecommerce/setup`: Pre-test/setup flows (e.g., user bootstrap).
 - `tests/api`: API tests using Playwright’s request client.
 - `tests/fixtures`: Reusable Playwright fixtures (e.g., seeded Faker data).
 - `tests/data`: Test data utilities (constants, factories/builders).
@@ -33,6 +37,7 @@ The goal of this repo is to provide a realistic, recruiter-friendly example of a
 - Install deps: `npm install`
 - Install Playwright browsers: `npx playwright install --with-deps`
 - Optional: copy `.env.example` to `.env.dev` and adjust base URLs/keys if needed.
+  - Staging base URL (ecommerce): `STAGING_BASE_URL=https://automationexercise.com`
 
 **Run Commands**
 - All tests: `npm test`
@@ -43,6 +48,10 @@ The goal of this repo is to provide a realistic, recruiter-friendly example of a
 - Debug mode: `npm run test:debug`
 - Filter by title: `npx playwright test -g "Dynamic Table"`
 - Single spec: `npx playwright test tests/ui/playground/usePageObjectModel.spec.ts`
+- Ecommerce (staging project):
+  - All specs: `npx playwright test --project=staging`
+  - Single spec: `npx playwright test --project=staging tests/ui/ecommerce/signUpUser.spec.ts`
+  - Grep by title: `npx playwright test --project=staging -g "Sign Up"`
 
 **Reports & Artifacts**
 - Playwright HTML report: `npm run pw:report`
@@ -71,6 +80,16 @@ Live Allure Report (GitHub Pages)
 - Network mocking: `tests/ui/playground/networkMock.spec.ts`
 - Accessibility (axe-core): `tests/ui/playground/a11y.spec.ts` (skips unless `@axe-core/playwright` is installed)
 - Visual snapshot (local-only): `tests/ui/playground/visualHeader.spec.ts` (skipped by default)
+- Ecommerce signup/account lifecycle (WIP): `tests/ui/ecommerce/signUpUser.spec.ts`
+
+**Ecommerce Suite**
+- Scope: signup/login/account lifecycle using POM + components; full checkout E2E is in progress.
+- Locations:
+  - POMs: `tests/ui/ecommerce/page-objects/`
+  - Components: `tests/ui/ecommerce/components/`
+  - Data fixtures: `tests/ui/ecommerce/fixtures/` (e.g., `newUser.fixture.ts`)
+  - Setup flows: `tests/ui/ecommerce/setup/` (e.g., `newUser.setup.ts`)
+- Run locally with the `staging` project (see commands above).
 
 **Environment Setup**
 - Copy `.env.example` → `.env.dev` and adjust as needed for local runs.
@@ -85,6 +104,11 @@ Live Allure Report (GitHub Pages)
 - Grouping: use `test.describe()` to group related specs and `test.step()` to make reports readable.
 - POM usage: property‑style via `PageManager` (e.g., `await pm.navigateTo().dynamicTablePage(); const cpu = await pm.onDynamicTable.captureValueofCpu('Chrome');`).
 - Naming: prefer intent‑based helpers in page objects (e.g., `captureValueofCpu`) instead of raw locator logic in tests.
+
+**Assertion Logging**
+- Helpers in `tests/support/assertions.ts` provide consistent logs:
+  - `assertVisible`, `assertHidden`, `assertText`, `assertEqual`, `logAssert`.
+  - Example: `await assertVisible(page.getByRole('button', { name: 'Overlapped' }), 'Overlapped button');`
 
 **Mobile Emulation (local)**
 - Add a mobile project temporarily and run a stable spec:
@@ -102,3 +126,4 @@ Live Allure Report (GitHub Pages)
 - Add a Lint job in `.github/workflows/playwright.yml` and make tests depend on it (`needs: [lint]`).
 - Add a nightly smoke run with `schedule` + `--grep @smoke`.
 - Publish CI Allure to GitHub Pages: add a Pages upload/deploy step, then link the live report in this README.
+- Current CI runs `dev`, `api`, and `staging` projects. Staging executes the ecommerce suite against `STAGING_BASE_URL` and is included in the Allure report published from `main`.
