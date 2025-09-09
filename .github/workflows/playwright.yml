@@ -73,7 +73,7 @@ jobs:
         run: |
           # Run selected projects from playwright.config.ts (no --browser when projects are defined)
           npx playwright test \
-            --project=dev --project=api \
+            --project=dev --project=api --project=staging\
             --reporter=line,html,allure-playwright \
             --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} \
             --trace=on-first-retry \
