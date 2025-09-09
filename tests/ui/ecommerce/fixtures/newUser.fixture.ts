@@ -1,9 +1,7 @@
-// tests/ui/ecommerce/fixtures/newUser.fixture.ts
 import { test as base} from '@playwright/test';
 import { setupNewUser } from '../setup/newUser.setup';
 import { PageManager } from '../page-objects/pageManager';
-
-import { assertVisible, assertEqual, assertText, logAssert } from '../../../support/assertions'
+import { assertText} from '../../../support/assertions'
 
 type NewUser = Awaited<ReturnType<typeof setupNewUser>>;
 

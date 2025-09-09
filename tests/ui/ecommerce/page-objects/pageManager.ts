@@ -1,7 +1,6 @@
 import { Page } from "@playwright/test";
-
-import { LoginSignUpPage } from "./loginSignUpPage";
 import { HomePage } from "./homePage";
+import { LoginSignUpPage } from "./loginSignUpPage";
 import { RegisterPage } from "./registerPage";
 import { AccountCreatedPage } from "./accountCreatedPage";
 import { AccountDeletedPage } from "./accountDeletedPage";

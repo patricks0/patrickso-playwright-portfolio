@@ -1,6 +1,5 @@
-import { Page, Locator, expect } from '@playwright/test';
+import { Page, Locator} from '@playwright/test';
 import { NavBar } from '../components/navBar';
-
 
 export class AccountCreatedPage {
     readonly page: Page;

@@ -1,7 +1,6 @@
 import { Page, Locator } from '@playwright/test';
 import { NavBar } from '../components/navBar';
 
-
 export class RegisterPage {
     readonly page: Page;
     readonly nav: NavBar;
@@ -25,7 +24,6 @@ export class RegisterPage {
   get offersCheckbox(): Locator { return this.page.getByLabel('Receive special offers from our partners!'); }
   get firstNameInput(): Locator { return this.page.getByRole('textbox', { name: 'First name' }); }
   get lastNameInput(): Locator { return this.page.getByRole('textbox', { name: 'Last name' }); }
-
 
   // Address/contact
   get companyInput(): Locator { return this.page.locator('#company'); }
