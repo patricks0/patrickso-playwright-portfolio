@@ -1,10 +1,11 @@
 import { Page } from "@playwright/test";
 import { AccountCreatedPage } from "./accountCreatedPage";
 import { AccountDeletedPage } from "./accountDeletedPage";
+import { ContactUsFormPage } from "./contactUsFormPage";
 import { HomePage } from "./homePage";
 import { LoginSignUpPage } from "./loginSignUpPage";
 import { RegisterPage } from "./registerPage";
-import { ContactUsFormPage } from "./contactUsFormPage";
+
 
 export class PageManager {
     private readonly page: Page;

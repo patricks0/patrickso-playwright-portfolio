@@ -1,7 +1,8 @@
 import { test } from './fixtures/newUser.fixture';
 import { PageManager } from './page-objects/pageManager';
-import { assertText } from '../../support/assertions';
 import { userBuilder } from '../../data/factories';
+import { assertText } from '../../support/assertions';
+
 
 test('Test Case 6 - Verify that user is able to send form using Contact Us', async ({ page }) => {
     const pm = new PageManager(page);
