@@ -4,6 +4,7 @@ import { AccountDeletedPage } from "./accountDeletedPage";
 import { HomePage } from "./homePage";
 import { LoginSignUpPage } from "./loginSignUpPage";
 import { RegisterPage } from "./registerPage";
+import { ContactUsFormPage } from "./contactUsFormPage";
 
 export class PageManager {
     private readonly page: Page;
@@ -12,6 +13,7 @@ export class PageManager {
     private readonly registerPage: RegisterPage;
     private readonly accountCreatedPage: AccountCreatedPage;
     private readonly accountDeletedPage: AccountDeletedPage;
+    private readonly contactUsFormPage: ContactUsFormPage;
 
     constructor(page: Page) {
         this.page = page;
@@ -20,6 +22,8 @@ export class PageManager {
         this.registerPage = new RegisterPage(page);
         this.accountCreatedPage = new AccountCreatedPage(page);
         this.accountDeletedPage = new AccountDeletedPage(page);
+        this.contactUsFormPage = new ContactUsFormPage(page);
+
     }
 
     // Property-style accessors for page objects
@@ -28,6 +32,7 @@ export class PageManager {
     get onRegisterPage() { return this.registerPage; }
     get onAccountCreatedPage() { return this.accountCreatedPage; }
     get onAccountDeletedPage() { return this.accountDeletedPage; }
+    get onContactUsFormPage() { return this.contactUsFormPage; }    
 }
 
 

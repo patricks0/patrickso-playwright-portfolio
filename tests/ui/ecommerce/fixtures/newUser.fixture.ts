@@ -6,11 +6,17 @@ import { setupNewUser } from '../setup/newUser.setup';
 type NewUser = Awaited<ReturnType<typeof setupNewUser>>;
 
 export const test = base.extend<{ newUser: NewUser }>({
+  // Global per-test navigation: start every test on home
+  page: async ({ page }, use) => {
+    await page.goto('/');
+    await use(page);
+  },
+
   newUser: async ({ page }, use) => {
     // Arrange: create user
     const user = await setupNewUser(page);
     await use(user);
-  
+
     // Finalizer: cleanup user (via UI here; swap to API if available)
     try {
       const pm = new PageManager(page);
