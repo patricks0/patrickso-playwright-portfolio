@@ -10,7 +10,7 @@ export const test = base.extend<{ newUser: NewUser }>({
     // Arrange: create user
     const user = await setupNewUser(page);
     await use(user);
-
+  
     // Finalizer: cleanup user (via UI here; swap to API if available)
     try {
       const pm = new PageManager(page);

@@ -33,6 +33,11 @@ export class LoginSignUpPage {
     async enterEmailAddress(email: string) {
         await this.emailInputField.fill(email);
     }
+    async signUp(name: string, email: string) {
+        await this.enterSignUpUserName(name);
+        await this.enterEmailAddress(email);
+        await this.clickSignupButton();
+    }
 
     //Login to your account -----------------------------
     // Locators - Login to your account
@@ -52,9 +57,22 @@ export class LoginSignUpPage {
     async clickLoginButton() {
         await this.loginButton.click();
     }
+    async login(email: string, password: string) {
+        await this.loginEmailInputField.fill(email);
+        await this.loginPasswordInputField.fill(password);
+        await this.clickLoginButton();
+    }
 
     // --- Post-login ---
     get logoutLink(): Locator { return this.page.getByRole('link', { name: /logout/i }); }
     get deleteAccountLink(): Locator { return this.page.getByRole('link', { name: /delete account/i }); }
     get loggedInAsLabel(): Locator { return this.page.locator('[data-qa="logged-in-as"]'); } // adjust if needed
+
+    //error messages Locators
+    get incorrectEmailPasswordText(): Locator {
+        return this.page.getByText(/Your email or password is incorrect!/i);
+    }
+    get emailAlreadyExistText(): Locator {
+        return this.page.getByText(/Email Address already exist!/i);
+    }
 }
