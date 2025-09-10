@@ -52,6 +52,11 @@ export class LoginSignUpPage {
     async clickLoginButton() {
         await this.loginButton.click();
     }
+    async login(email: string, password: string) {
+        await this.loginEmailInputField.fill(email);
+        await this.loginPasswordInputField.fill(password);
+        await this.clickLoginButton();
+    }
 
     // --- Post-login ---
     get logoutLink(): Locator { return this.page.getByRole('link', { name: /logout/i }); }
