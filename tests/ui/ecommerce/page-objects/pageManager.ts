@@ -6,6 +6,7 @@ import { ContactUsFormPage } from "./contactUsFormPage";
 import { HomePage } from "./homePage";
 import { LoginSignUpPage } from "./loginSignUpPage";
 import { RegisterPage } from "./registerPage";
+import { TestCasePage } from "./testCasePage";
 
 
 export class PageManager {
@@ -16,6 +17,7 @@ export class PageManager {
     private readonly accountCreatedPage: AccountCreatedPage;
     private readonly accountDeletedPage: AccountDeletedPage;
     private readonly contactUsFormPage: ContactUsFormPage;
+    private readonly testCasePage: TestCasePage;
 
     constructor(page: Page) {
         this.page = page;
@@ -25,6 +27,7 @@ export class PageManager {
         this.accountCreatedPage = new AccountCreatedPage(page);
         this.accountDeletedPage = new AccountDeletedPage(page);
         this.contactUsFormPage = new ContactUsFormPage(page);
+        this.testCasePage = new TestCasePage(page);
 
     }
 
@@ -34,7 +37,8 @@ export class PageManager {
     get onRegisterPage() { return this.registerPage; }
     get onAccountCreatedPage() { return this.accountCreatedPage; }
     get onAccountDeletedPage() { return this.accountDeletedPage; }
-    get onContactUsFormPage() { return this.contactUsFormPage; }    
+    get onContactUsFormPage() { return this.contactUsFormPage; } 
+    get onTestCasePage() { return this.testCasePage; }   
 }
 
 
