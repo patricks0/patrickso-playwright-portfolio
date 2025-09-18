@@ -5,9 +5,10 @@ import { AccountDeletedPage } from "./accountDeletedPage";
 import { ContactUsFormPage } from "./contactUsFormPage";
 import { HomePage } from "./homePage";
 import { LoginSignUpPage } from "./loginSignUpPage";
+import { ProductsPage } from "./productsPage";
+import { ProductDetailsPage } from "./productDetailsPage";
 import { RegisterPage } from "./registerPage";
 import { TestCasePage } from "./testCasePage";
-
 
 export class PageManager {
     private readonly page: Page;
@@ -18,6 +19,8 @@ export class PageManager {
     private readonly accountDeletedPage: AccountDeletedPage;
     private readonly contactUsFormPage: ContactUsFormPage;
     private readonly testCasePage: TestCasePage;
+    private readonly productsPage: ProductsPage;
+    private readonly productDetailsPage: ProductDetailsPage;
 
     constructor(page: Page) {
         this.page = page;
@@ -28,7 +31,8 @@ export class PageManager {
         this.accountDeletedPage = new AccountDeletedPage(page);
         this.contactUsFormPage = new ContactUsFormPage(page);
         this.testCasePage = new TestCasePage(page);
-
+        this.productsPage = new ProductsPage(page);
+        this.productDetailsPage = new ProductDetailsPage(page);
     }
 
     // Property-style accessors for page objects
@@ -37,8 +41,10 @@ export class PageManager {
     get onRegisterPage() { return this.registerPage; }
     get onAccountCreatedPage() { return this.accountCreatedPage; }
     get onAccountDeletedPage() { return this.accountDeletedPage; }
-    get onContactUsFormPage() { return this.contactUsFormPage; } 
-    get onTestCasePage() { return this.testCasePage; }   
+    get onContactUsFormPage() { return this.contactUsFormPage; }
+    get onTestCasePage() { return this.testCasePage; }
+    get onProductsPage() { return this.productsPage; }
+    get onProductDetailsPage() { return this.productDetailsPage; }
 }
 
 

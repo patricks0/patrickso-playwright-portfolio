@@ -1,7 +1,5 @@
 import { test } from './fixtures/newUser.fixture';
-
 import { PageManager } from './page-objects/pageManager';
-
 import { assertText } from '../../support/assertions';
 
 test('Test Case 7 - Verify that user can access Test Case Page', async ({ page }) => {
