@@ -1,10 +1,8 @@
+import { PRODUCTS } from './data/products';
 import { test } from './fixtures/newUser.fixture';
-
 import { PageManager } from './page-objects/pageManager';
-
 import { assertText } from '../../support/assertions';
 
-import { PRODUCTS } from './data/products';
 
 
 

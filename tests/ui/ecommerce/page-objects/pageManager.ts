@@ -5,10 +5,10 @@ import { AccountDeletedPage } from "./accountDeletedPage";
 import { ContactUsFormPage } from "./contactUsFormPage";
 import { HomePage } from "./homePage";
 import { LoginSignUpPage } from "./loginSignUpPage";
-import { RegisterPage } from "./registerPage";
-import { TestCasePage } from "./testCasePage";
 import { ProductsPage } from "./productsPage";
 import { ProductDetailsPage } from "./productDetailsPage";
+import { RegisterPage } from "./registerPage";
+import { TestCasePage } from "./testCasePage";
 
 export class PageManager {
     private readonly page: Page;
