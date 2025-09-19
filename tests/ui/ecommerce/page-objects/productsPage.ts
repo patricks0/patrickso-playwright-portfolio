@@ -15,10 +15,10 @@ export class ProductsPage {
     get productsList(): Locator { return this.page.locator('.features_items .col-sm-4'); }
     get productName(): Locator { return this.page.locator('.productinfo.text-center p'); }
     viewProductButton(productIndex: number): Locator { return this.productsList.nth(productIndex).getByRole('link', { name: /view product/i }); }
-    //clickProduct(productName: string): Locator { return this.page.getByRole('link', { name: productName }); }
-
+    get searchInputField(): Locator { return this.page.locator('#search_product'); }
+    get searchButton(): Locator { return this.page.locator('#submit_search'); }
+    
     //ACTIONS
-
     async clickTheProduct(productName: string) {
         // Gather all product name elements
         const names = this.productName; // '.productinfo.text-center p'
@@ -64,5 +64,9 @@ export class ProductsPage {
         const link = this.viewProductButton(index); // role('link', name=/view product/i)
         await link.scrollIntoViewIfNeeded();
         await link.click();
+    }
+    async searchForProduct(productName: string) {
+        await this.searchInputField.fill(productName);
+        await this.searchButton.click();
     }
 }
