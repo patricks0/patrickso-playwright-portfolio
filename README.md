@@ -1,6 +1,6 @@
 # patrickso-playwright-portfolio
 
-[![CI](https://github.com/patricks0/patrickso-playwright-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/patricks0/patrickso-playwright-portfolio/actions/workflows/ci.yml)
+[![CI](https://github.com/patricks0/patrickso-playwright-portfolio/actions/workflows/playwright.yml/badge.svg)](https://github.com/patricks0/patrickso-playwright-portfolio/actions/workflows/playwright.yml)
 [![Playwright](https://img.shields.io/badge/playwright-1.35.1-blue)](https://playwright.dev)
 [![License](https://img.shields.io/github/license/patricks0/patrickso-playwright-portfolio)](LICENSE)
 
