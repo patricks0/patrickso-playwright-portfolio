@@ -1,8 +1,8 @@
 # patrickso-playwright-portfolio
 
-[![CI](https://github.com/patrickso/patrickso-playwright-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/patrickso/patrickso-playwright-portfolio/actions/workflows/ci.yml)
+[![CI](https://github.com/patricks0/patrickso-playwright-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/patricks0/patrickso-playwright-portfolio/actions/workflows/ci.yml)
 [![Playwright](https://img.shields.io/badge/playwright-1.35.1-blue)](https://playwright.dev)
-[![License](https://img.shields.io/github/license/patrickso/patrickso-playwright-portfolio)](LICENSE)
+[![License](https://img.shields.io/github/license/patricks0/patrickso-playwright-portfolio)](LICENSE)
 
 This repository contains a Playwright testing portfolio showcasing various testing techniques and strategies.
 
