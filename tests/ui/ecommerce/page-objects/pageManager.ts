@@ -1,9 +1,7 @@
 import { Page } from "@playwright/test";
-
 import { AccountCreatedPage } from "./accountCreatedPage";
 import { AccountDeletedPage } from "./accountDeletedPage";
 import { ContactUsFormPage } from "./contactUsFormPage";
-//import { HomePage } from "./homePage";
 import { LoginSignUpPage } from "./loginSignUpPage";
 import { ProductsPage } from "./productsPage";
 import { ProductDetailsPage } from "./productDetailsPage";
@@ -15,7 +13,6 @@ import { Footer } from "../components/footer";
 export class PageManager {
     private readonly page: Page;
     private readonly _loginSignUpPage: LoginSignUpPage;
-    //private readonly _homePage: HomePage;
     private readonly _registerPage: RegisterPage;
     private readonly _accountCreatedPage: AccountCreatedPage;
     private readonly _accountDeletedPage: AccountDeletedPage;
@@ -29,7 +26,6 @@ export class PageManager {
     constructor(page: Page) {
         this.page = page;
         this._loginSignUpPage = new LoginSignUpPage(page);
-        //this._homePage = new HomePage(page);
         this._registerPage = new RegisterPage(page);
         this._accountCreatedPage = new AccountCreatedPage(page);
         this._accountDeletedPage = new AccountDeletedPage(page);
@@ -44,7 +40,6 @@ export class PageManager {
 
     // Property-style accessors for page objects
     get onLoginSignUpPage() { return this._loginSignUpPage; }
-    //get onHome() { return this._homePage; }
     get onRegisterPage() { return this._registerPage; }
     get onAccountCreatedPage() { return this._accountCreatedPage; }
     get onAccountDeletedPage() { return this._accountDeletedPage; }
