@@ -5,7 +5,7 @@ import { assertText } from '../../support/assertions';
 test('Test Case 3 - Verify that user receives an error when logging in with invalid user', async ({ page }) => {
     const pm = new PageManager(page);
     await page.goto('/');
-    await pm.onHome.nav.clickSignupLoginLink();
+    await pm.onNavBar.clickSignupLoginLink();
     await assertText(pm.onLoginSignUpPage.loginToYourAccountText, `Login to your account`, 'Login Page is visible');
     // Attempt to login with invalid credentials
     await pm.onLoginSignUpPage.login('invalidUser@wrongemail.com', 'PasswordPassword!');

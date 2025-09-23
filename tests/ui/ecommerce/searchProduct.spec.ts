@@ -7,7 +7,7 @@ test('Test Case 9 - Verify Searched Product is Visible', async ({ page }) => {
     const pm = new PageManager(page);
     const product = PRODUCTS.WHITE_TOP;
 
-    await pm.onHome.nav.goToProducts();
+    await pm.onNavBar.goToProducts();
     await assertText(pm.onProductsPage.allProductsText, 'All Products', 'All Products is visible');
     await pm.onProductsPage.searchForProduct(product.name);
     await assertText(pm.onProductsPage.productName.first(), product.name, `Searched product name "${product.name}" is visible`);

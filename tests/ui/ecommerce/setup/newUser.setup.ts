@@ -37,7 +37,8 @@ export async function setupNewUser(page: Page, opts: SetupOptions = {}): Promise
   const dob = generateRandomDOB(18);
 
   await page.goto('/');
-  await pm.onHome.clickSignupLoginLink();
+  await pm.onNavBar.clickSignupLoginLink();
+  //await pm.onHome.clickSignupLoginLink();
   await assertText(pm.onLoginSignUpPage.newUserSignupText, 'New User Signup!', 'Expected Text displayed');
 
   // Signup form
