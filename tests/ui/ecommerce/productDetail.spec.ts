@@ -10,7 +10,7 @@ test('Test Case 8 - Verify All Products Page is Displayed and Product Detail Pag
     const pm = new PageManager(page);
     const product = PRODUCTS.WHITE_TOP;
 
-    await pm.onHome.nav.goToProducts();
+    await pm.onNavBar.goToProducts();
     await assertText(pm.onProductsPage.allProductsText, 'All Products', 'All Products is visible');
     await pm.onProductsPage.clickTheProduct(product.name);
     await assertText(pm.onProductDetailsPage.productName, product.name, `Product name "${product.name}" is visible`);

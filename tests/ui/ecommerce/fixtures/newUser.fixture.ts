@@ -22,7 +22,7 @@ export const test = base.extend<{ newUser: NewUser }>({
     try {
       const pm = new PageManager(page);
       // ensure we’re on a page with the nav / delete link:
-      await pm.onHome.nav.clickDeleteAccount();
+      await pm.onNavBar.clickDeleteAccount();
       assertText(pm.onAccountDeletedPage.accountDeletedText, 'Account Deleted!', 'Account Deleted! text is visible after cleanup');
 
     } catch (e) {

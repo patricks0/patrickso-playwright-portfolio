@@ -9,7 +9,7 @@ test('Test Case 6 - Verify that user is able to send form using Contact Us', asy
     const user = userBuilder();
     const { email, name } = user;
 
-    await pm.onHome.nav.goToContactUs();
+    await pm.onNavBar.goToContactUs();
     await assertText(pm.onContactUsFormPage.getInTouchText, `Get In Touch`, 'Get In Touch is visible');
     await pm.onContactUsFormPage.fillContactForm(name, email, 'Test Subject', 'This is a test message.', 'tests/ui/ecommerce/fixtures/testFile.txt');
     await pm.onContactUsFormPage.clickSubmitAndAcceptAlert('Press OK to proceed!');

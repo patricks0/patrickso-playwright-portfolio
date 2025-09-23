@@ -19,6 +19,7 @@ export class NavBar {
 
     // Utility
     get userLoggedInBanner(): Locator { return this.page.locator('[data-qa="user-logged-in"]'); } // adjust if needed
+    get actualUserLoggedIn(): Locator { return this.page.locator('li a', { hasText: 'Logged in as' }) }// adjust if needed
 
     //Actions
     async clickSignupLoginLink() {

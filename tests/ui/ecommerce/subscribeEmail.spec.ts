@@ -9,7 +9,7 @@ test('Test Case 10 - Verify user can successfully subcribe using email', async (
     const user = userBuilder();
     const { email } = user;
 
-    await assertText(pm.onHome.subscribeText, `Subscription`, 'Subscription text is visible');
-    await pm.onHome.subscribe( email );
-    await assertText(pm.onHome.successAlert, 'You have been successfully subscribed!', 'Success message is visible after subscribing');
+    await assertText(pm.onFooter.subscribeText, `Subscription`, 'Subscription text is visible');
+    await pm.onFooter.subscribe( email );
+    await assertText(pm.onFooter.successAlert, 'You have been successfully subscribed!', 'Success message is visible after subscribing');
 })
