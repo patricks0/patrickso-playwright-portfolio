@@ -45,7 +45,7 @@ Reports & Artifacts:
 - Allure reports are generated in the `reports/allure` directory.
 - CI pipelines collect artifacts on test failures for debugging.
 - Live Allure report can be viewed locally using `allure serve` command.
-- Live Allure Report: [View Report](https://patricks0-playwright-portfolio-allure.netlify.app)
+- Live Allure Report: [View Report](https://patricks0.github.io/patrickso-playwright-portfolio/) *(latest `main` build)*
 - CI Allure report viewing is configured in the pipeline for easy access.
 
 Highlighted Examples:
