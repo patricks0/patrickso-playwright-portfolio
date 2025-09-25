@@ -7,6 +7,7 @@ import { ProductsPage } from "./productsPage";
 import { ProductDetailsPage } from "./productDetailsPage";
 import { RegisterPage } from "./registerPage";
 import { TestCasePage } from "./testCasePage";
+import { ViewCartPage } from "./viewCartPage";
 import { NavBar } from "../components/navBar";
 import { Footer } from "../components/footer";
 
@@ -20,6 +21,7 @@ export class PageManager {
     private readonly _testCasePage: TestCasePage;
     private readonly _productsPage: ProductsPage;
     private readonly _productDetailsPage: ProductDetailsPage;
+    private readonly _viewCartPage: ViewCartPage;
     private readonly _navBar: NavBar;
     private readonly _footer: Footer;
 
@@ -33,9 +35,10 @@ export class PageManager {
         this._testCasePage = new TestCasePage(page);
         this._productsPage = new ProductsPage(page);
         this._productDetailsPage = new ProductDetailsPage(page);
+        this._viewCartPage = new ViewCartPage(page);
         this._navBar = new NavBar(page);
         this._footer = new Footer(page);
-
+        
     }
 
     // Property-style accessors for page objects
@@ -47,6 +50,7 @@ export class PageManager {
     get onTestCasePage() { return this._testCasePage; }
     get onProductsPage() { return this._productsPage; }
     get onProductDetailsPage() { return this._productDetailsPage; }
+    get onViewCartPage() { return this._viewCartPage; }
     get onNavBar() { return this._navBar; }
     get onFooter() { return this._footer; }
 }

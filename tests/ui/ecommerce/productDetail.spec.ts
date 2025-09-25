@@ -12,7 +12,7 @@ test('Test Case 8 - Verify All Products Page is Displayed and Product Detail Pag
 
     await pm.onNavBar.goToProducts();
     await assertText(pm.onProductsPage.allProductsText, 'All Products', 'All Products is visible');
-    await pm.onProductsPage.clickTheProduct(product.name);
+    await pm.onProductsPage.clickViewProduct(product.name);
     await assertText(pm.onProductDetailsPage.productName, product.name, `Product name "${product.name}" is visible`);
     await assertText(pm.onProductDetailsPage.productCategory, `Category: ${product.category}`, `Category "${product.category}" is visible`);
     await assertText(pm.onProductDetailsPage.productPrice, product.priceText, `Price "${product.priceText}" is visible`);
