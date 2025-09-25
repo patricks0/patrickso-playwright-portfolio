@@ -11,7 +11,7 @@ test('Test Case 9 - Verify Searched Product is Visible', async ({ page }) => {
     await assertText(pm.onProductsPage.allProductsText, 'All Products', 'All Products is visible');
     await pm.onProductsPage.searchForProduct(product.name);
     await assertText(pm.onProductsPage.productName.first(), product.name, `Searched product name "${product.name}" is visible`);
-    await pm.onProductsPage.clickTheProduct(product.name);
+    await pm.onProductsPage.clickViewProduct(product.name);
     await assertText(pm.onProductDetailsPage.productName, product.name, `Product name "${product.name}" is visible`);
     await assertText(pm.onProductDetailsPage.productCategory, `Category: ${product.category}`, `Category "${product.category}" is visible`);
     await assertText(pm.onProductDetailsPage.productPrice, product.priceText, `Price "${product.priceText}" is visible`);
