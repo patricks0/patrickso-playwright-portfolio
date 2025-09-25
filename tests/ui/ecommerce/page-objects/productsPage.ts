@@ -17,9 +17,45 @@ export class ProductsPage {
     viewProductButton(productIndex: number): Locator { return this.productsList.nth(productIndex).getByRole('link', { name: /view product/i }); }
     get searchInputField(): Locator { return this.page.locator('#search_product'); }
     get searchButton(): Locator { return this.page.locator('#submit_search'); }
+    get continueShoppingButton(): Locator { return this.page.getByRole('button', { name: 'Continue Shopping' }); }
+    get viewCartLink(): Locator { return this.page.getByRole('link', { name: /view cart/i }).first(); }
+    addToCartButton(productIndex: number): Locator { return this.productsList.nth(productIndex).locator('.add-to-cart').first(); }
+
     
     //ACTIONS
-    async clickTheProduct(productName: string) {
+    async clickContinueShopping() {
+        await this.continueShoppingButton.click();
+    }
+    async clickViewCart() {
+        await this.viewCartLink.click();
+    }
+
+    async clickViewProduct(name: string) {
+        const index = await this.getIndexOfProduct(name);
+        await this.viewProductButton(index).scrollIntoViewIfNeeded();
+        await this.viewProductButton(index).click();
+    }
+    async clickAddToCart(name: string, quantity = 1) {
+        const index = await this.getIndexOfProduct(name);
+
+        for (let i = 0; i < quantity; i++) {
+            const button = this.addToCartButton(index);
+            await button.scrollIntoViewIfNeeded();
+            await button.click();
+
+            if (i < quantity - 1) {
+                // Modal blocks the page after each add; close it before the next iteration.
+                await this.clickContinueShopping();
+            }
+        }
+    }
+
+    async searchForProduct(productName: string) {
+        await this.searchInputField.fill(productName);
+        await this.searchButton.click();
+    }
+
+    async getIndexOfProduct(productName: string) {
         // Gather all product name elements
         const names = this.productName; // '.productinfo.text-center p'
         const total = await names.count();
@@ -59,14 +95,6 @@ export class ProductsPage {
                 `Product "${productName}" not found. Visible products (in order):\n- ${seen.join("\n- ")}`
             );
         }
-
-        // Click the corresponding View Product link by index
-        const link = this.viewProductButton(index); // role('link', name=/view product/i)
-        await link.scrollIntoViewIfNeeded();
-        await link.click();
-    }
-    async searchForProduct(productName: string) {
-        await this.searchInputField.fill(productName);
-        await this.searchButton.click();
+        return index;
     }
 }
