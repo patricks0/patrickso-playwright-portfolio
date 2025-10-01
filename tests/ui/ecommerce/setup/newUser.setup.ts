@@ -15,7 +15,9 @@ export type NewUserResult = {
   email: string;
   firstName: string;
   lastName: string;
+  company: string;
   address: ReturnType<typeof addressBuilder>;
+  mobile: string;
   storageStatePath?: string;
 };
 
@@ -40,8 +42,9 @@ export async function setupNewUser(page: Page, opts: SetupOptions = {}): Promise
 
   if (!opts.skipNavigateHome) {
     await page.goto('/');
+    await pm.onNavBar.clickSignupLoginLink();
   }
-  await pm.onNavBar.clickSignupLoginLink();
+  
   //await pm.onHome.clickSignupLoginLink();
   await assertText(pm.onLoginSignUpPage.newUserSignupText, 'New User Signup!', 'Expected Text displayed');
 
@@ -83,5 +86,5 @@ export async function setupNewUser(page: Page, opts: SetupOptions = {}): Promise
     await page.context().storageState({ path: opts.saveStateTo });
   }
 
-  return { username, email, firstName, lastName, address, storageStatePath: opts.saveStateTo };
+  return { username, email, firstName, lastName, company: company.name, address,mobile, storageStatePath: opts.saveStateTo };
 }

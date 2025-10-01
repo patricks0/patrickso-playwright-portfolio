@@ -3,14 +3,64 @@ import { faker as baseFaker } from '@faker-js/faker';
 const statesByCountry: Record<string, string[]> = {
   Australia: ['VIC', 'NSW', 'QLD', 'WA', 'SA', 'TAS', 'ACT', 'NT'],
   'United States': [
-    'AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY','DC'
+    'AL',
+    'AK',
+    'AZ',
+    'AR',
+    'CA',
+    'CO',
+    'CT',
+    'DE',
+    'FL',
+    'GA',
+    'HI',
+    'ID',
+    'IL',
+    'IN',
+    'IA',
+    'KS',
+    'KY',
+    'LA',
+    'ME',
+    'MD',
+    'MA',
+    'MI',
+    'MN',
+    'MS',
+    'MO',
+    'MT',
+    'NE',
+    'NV',
+    'NH',
+    'NJ',
+    'NM',
+    'NY',
+    'NC',
+    'ND',
+    'OH',
+    'OK',
+    'OR',
+    'PA',
+    'RI',
+    'SC',
+    'SD',
+    'TN',
+    'TX',
+    'UT',
+    'VT',
+    'VA',
+    'WA',
+    'WV',
+    'WI',
+    'WY',
+    'DC',
   ],
 };
 
 // Builders return fresh objects and allow overrides for targeted scenarios
 export function userBuilder(
   faker = baseFaker,
-  overrides: Partial<{ name: string; username: string; email: string }> = {}
+  overrides: Partial<{ name: string; username: string; email: string }> = {},
 ) {
   // Generate name without prefixes/titles
   const firstName = faker.person.firstName();
@@ -38,7 +88,13 @@ export function userBuilder(
 
 export function addressBuilder(
   country: string,
-  overrides: Partial<{ line1: string; city: string; state: string; postcode: string; country: string }> = {}
+  overrides: Partial<{
+    line1: string;
+    city: string;
+    state: string;
+    postcode: string;
+    country: string;
+  }> = {},
 ) {
   const faker = baseFaker;
   const line1 = overrides.line1 ?? faker.location.streetAddress();
@@ -69,21 +125,23 @@ export function randomButtonLabel(faker = baseFaker, words = 2) {
   return faker.word.words(words);
 }
 
-export function companyBuilder(
-  faker = baseFaker,
-  overrides: Partial<{ name: string }> = {}
-) {
+export function companyBuilder(faker = baseFaker, overrides: Partial<{ name: string }> = {}) {
   return {
     name: overrides.name ?? faker.company.name(),
     ...overrides,
   };
 }
 
-
-export function countryBuilder(
-  overrides: Partial<{ name: string }> = {}
-) {
-  const countries = ['India', 'United States', 'Australia', 'Israel', 'New Zealand', 'Canada','Singapore'];
+export function countryBuilder(overrides: Partial<{ name: string }> = {}) {
+  const countries = [
+    'India',
+    'United States',
+    'Australia',
+    'Israel',
+    'New Zealand',
+    'Canada',
+    'Singapore',
+  ];
   return {
     name: overrides.name ?? baseFaker.helpers.arrayElement(countries),
     ...overrides,
@@ -110,6 +168,24 @@ export function mobileNumberBuilder(country: string): string {
   }
 }
 
+// Credit card number builder for different card types
+export function buildVisaCard() {
+  const number = baseFaker.finance.creditCardNumber('visa');
+
+  // expiry in MM/YY format (up to 3 years in the future)
+  const future = baseFaker.date.future({ years: 3 });
+  if (!(future instanceof Date)) {
+    throw new Error('Failed to generate future date');
+  }
+
+  const mm = String(future.getMonth() + 1).padStart(2, '0');
+  const yy = String(future.getFullYear()).slice(-2);
+  const expiry = `${mm}/${yy}`;
+
+  const cvv = baseFaker.finance.creditCardCVV(); // always 3 digits
+
+  return { number, yy , mm , cvv };
+}
 
 // --- Date of Birth helpers ---
 function randomInt(min: number, max: number): number {

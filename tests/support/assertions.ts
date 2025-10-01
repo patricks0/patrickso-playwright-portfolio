@@ -64,4 +64,3 @@ export async function assertEqual<T>(actual: T, expected: T, subject?: string) {
 export async function logAssert(message: string, assertion: () => Promise<void> | void) {
   await withLogging(message, assertion);
 }
-
