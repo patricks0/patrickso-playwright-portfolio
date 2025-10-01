@@ -1,8 +1,9 @@
 import { PRODUCTS } from './data/products';
 import { test } from './fixtures/newUser.fixture';
+import { parseCurrency } from './helpers/numberParser';
 import { PageManager } from './page-objects/pageManager';
 import { assertEqual, assertText } from '../../support/assertions';
-import { parseCurrency } from './helpers/numberParser';
+
 
 
 test('Test Case 12 - Verify user can add products to cart and verify details', async ({ page }) => {

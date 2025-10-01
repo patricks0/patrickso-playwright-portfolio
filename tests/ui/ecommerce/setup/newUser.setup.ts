@@ -15,7 +15,9 @@ export type NewUserResult = {
   email: string;
   firstName: string;
   lastName: string;
+  company: string;
   address: ReturnType<typeof addressBuilder>;
+  mobile: string;
   storageStatePath?: string;
 };
 
@@ -24,6 +26,8 @@ type SetupOptions = {
   state?: string;
   /** If provided, the session will be saved here via storageState */
   saveStateTo?: string;
+  /** Skip navigating back to home (e.g. when already mid-flow in a test) */
+  skipNavigateHome?: boolean;
 };
 
 export async function setupNewUser(page: Page, opts: SetupOptions = {}): Promise<NewUserResult> {
@@ -36,8 +40,11 @@ export async function setupNewUser(page: Page, opts: SetupOptions = {}): Promise
   const mobile = mobileNumberBuilder(address.country);
   const dob = generateRandomDOB(18);
 
-  await page.goto('/');
-  await pm.onNavBar.clickSignupLoginLink();
+  if (!opts.skipNavigateHome) {
+    await page.goto('/');
+    await pm.onNavBar.clickSignupLoginLink();
+  }
+  
   //await pm.onHome.clickSignupLoginLink();
   await assertText(pm.onLoginSignUpPage.newUserSignupText, 'New User Signup!', 'Expected Text displayed');
 
@@ -79,5 +86,5 @@ export async function setupNewUser(page: Page, opts: SetupOptions = {}): Promise
     await page.context().storageState({ path: opts.saveStateTo });
   }
 
-  return { username, email, firstName, lastName, address, storageStatePath: opts.saveStateTo };
+  return { username, email, firstName, lastName, company: company.name, address,mobile, storageStatePath: opts.saveStateTo };
 }

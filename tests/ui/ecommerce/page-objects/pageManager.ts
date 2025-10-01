@@ -1,15 +1,18 @@
 import { Page } from "@playwright/test";
 import { AccountCreatedPage } from "./accountCreatedPage";
 import { AccountDeletedPage } from "./accountDeletedPage";
+import { CheckOutPage } from "./checkOutPage";
 import { ContactUsFormPage } from "./contactUsFormPage";
 import { LoginSignUpPage } from "./loginSignUpPage";
-import { ProductsPage } from "./productsPage";
 import { ProductDetailsPage } from "./productDetailsPage";
+import { PaymentPage } from "./paymentPage";
+import { ProductsPage } from "./productsPage";
 import { RegisterPage } from "./registerPage";
 import { TestCasePage } from "./testCasePage";
 import { ViewCartPage } from "./viewCartPage";
-import { NavBar } from "../components/navBar";
 import { Footer } from "../components/footer";
+import { NavBar } from "../components/navBar";
+
 
 export class PageManager {
     private readonly page: Page;
@@ -22,6 +25,8 @@ export class PageManager {
     private readonly _productsPage: ProductsPage;
     private readonly _productDetailsPage: ProductDetailsPage;
     private readonly _viewCartPage: ViewCartPage;
+    private readonly _checkOutPage: CheckOutPage;
+    private readonly _paymentPage: PaymentPage;
     private readonly _navBar: NavBar;
     private readonly _footer: Footer;
 
@@ -36,6 +41,8 @@ export class PageManager {
         this._productsPage = new ProductsPage(page);
         this._productDetailsPage = new ProductDetailsPage(page);
         this._viewCartPage = new ViewCartPage(page);
+        this._checkOutPage = new CheckOutPage(page);
+        this._paymentPage = new PaymentPage(page);
         this._navBar = new NavBar(page);
         this._footer = new Footer(page);
         
@@ -51,6 +58,8 @@ export class PageManager {
     get onProductsPage() { return this._productsPage; }
     get onProductDetailsPage() { return this._productDetailsPage; }
     get onViewCartPage() { return this._viewCartPage; }
+    get onCheckOutPage() { return this._checkOutPage; }
+    get onPaymentPage() { return this._paymentPage; }
     get onNavBar() { return this._navBar; }
     get onFooter() { return this._footer; }
 }
