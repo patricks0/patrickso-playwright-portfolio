@@ -1,17 +1,18 @@
 import { Page } from "@playwright/test";
 import { AccountCreatedPage } from "./accountCreatedPage";
 import { AccountDeletedPage } from "./accountDeletedPage";
+import { CheckOutPage } from "./checkOutPage";
 import { ContactUsFormPage } from "./contactUsFormPage";
 import { LoginSignUpPage } from "./loginSignUpPage";
-import { ProductsPage } from "./productsPage";
 import { ProductDetailsPage } from "./productDetailsPage";
+import { PaymentPage } from "./paymentPage";
+import { ProductsPage } from "./productsPage";
 import { RegisterPage } from "./registerPage";
 import { TestCasePage } from "./testCasePage";
 import { ViewCartPage } from "./viewCartPage";
-import { CheckOutPage } from "./checkOutPage";
-import { PaymentPage } from "./paymentPage";
-import { NavBar } from "../components/navBar";
 import { Footer } from "../components/footer";
+import { NavBar } from "../components/navBar";
+
 
 export class PageManager {
     private readonly page: Page;

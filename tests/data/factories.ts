@@ -180,7 +180,6 @@ export function buildVisaCard() {
 
   const mm = String(future.getMonth() + 1).padStart(2, '0');
   const yy = String(future.getFullYear()).slice(-2);
-  const expiry = `${mm}/${yy}`;
 
   const cvv = baseFaker.finance.creditCardCVV(); // always 3 digits
 

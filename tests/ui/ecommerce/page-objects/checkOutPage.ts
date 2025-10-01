@@ -1,7 +1,5 @@
 import { Page, Locator } from '@playwright/test';
-
 import { NavBar } from '../components/navBar';
-
 import { parseCurrency } from '../helpers/numberParser';
 
 export class CheckOutPage {

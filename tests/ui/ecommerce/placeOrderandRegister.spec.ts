@@ -1,10 +1,11 @@
 import { PRODUCTS } from './data/products';
-import { test, expect } from './fixtures/newUser.fixture';
-import { PageManager } from './page-objects/pageManager';
-import { assertEqual, assertText } from '../../support/assertions';
+import { test } from './fixtures/newUser.fixture';
 import { parseCurrency } from './helpers/numberParser';
+import { PageManager } from './page-objects/pageManager';
 import { setupNewUser } from './setup/newUser.setup';
 import { buildVisaCard } from '../../data/factories';
+import { assertEqual, assertText } from '../../support/assertions';
+
 
 test('Test Case 14 - Verify user can place order then register user before checking out', async ({
   page,
